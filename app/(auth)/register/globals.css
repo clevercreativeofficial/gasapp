@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/2.5.1/uicons-brands/css/uicons-brands.css');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 0;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: none;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+html, body{
+  font-family: "Inter", sans-serif;
+  /* user-select: none; */
+  background-color: #f4f4f5;
+}
+
+
+/* Styling for slick dots */
+.slick-dots {
+  bottom: 15px; /* Adjust the position */
+}
+
+/* Increase the space between dots */
+.slick-dots li {
+  margin: 0; /* Adjust this value to increase or decrease the gap */
+}
+
+
+.slick-dots li button:before {
+  font-size: 10px; /* Size of the dots */
+  color: #b3b3b3; /* Default color of dots */
+  opacity: 0.75; /* Opacity of dots */
+}
+
+.slick-dots li.slick-active button:before {
+  color: #fff; /* Color for active dot */
+  opacity: 1; /* Full opacity for active dot */
+}
+
+/* Styling for slick arrows */
+.slick-prev, .slick-next {
+  width: 30px;
+  height: 30px;
+  z-index: 1;
+  border-radius: 50%; /* Rounded arrows */
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 20px;
+  color: white; /* Color for arrows */
+}
+
+.slick-prev {
+  left: 10px; /* Positioning for the left arrow */
+}
+
+.slick-next {
+  right: 10px; /* Positioning for the right arrow */
+}

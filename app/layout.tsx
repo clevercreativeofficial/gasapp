@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/navbar"
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -18,10 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="darks">
       <body
         className={`${interSans.variable} antialiased`}
       >
+        <Navbar />
         {children}
       </body>
     </html>

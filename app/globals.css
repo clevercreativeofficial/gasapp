@@ -45,7 +45,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: oklch(0.97 0.001 106.424);
   --foreground: oklch(22.645% 0.00003 271.152);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.147 0.004 49.25);
@@ -76,6 +76,22 @@
   --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
   --sidebar-border: oklch(0.923 0.003 48.717);
   --sidebar-ring: oklch(0.709 0.01 56.259);
+  
+  /* Custom colors */
+  --white: oklch(1 0 0);
+  --black: oklch(0 0 0);
+
+  --gray-soft: oklch(44.59% 0.00005 271.152); /* softer gray for subtle text */
+  --gray-faint: oklch(0.97 0.001 106.424); /* faint gray for placeholder or hints */
+
+  --alert-red: oklch(0.64 0.25 29);   /* Strong red for danger/error */
+  --alert-red-foreground: oklch(1 0 0); /* White text on red */
+
+  --info-blue: oklch(0.6 0.15 240);   /* Calm blue for info */
+  --info-blue-foreground: oklch(1 0 0);
+
+  --warn-orange: oklch(0.75 0.18 50); /* Vibrant orange for warnings */
+  --warn-orange-foreground: oklch(1 0 0);
 }
 
 .dark {
@@ -110,16 +126,70 @@
   --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.553 0.013 58.071);
+  
+  /* Custom colors*/
+  --white: oklch(0 0 0);
+  --black: oklch(1 0 0);
+
+  --gray-soft: oklch(0.7 0 0); /* slightly lighter for contrast */
+  --gray-faint: oklch(0.268 0.007 34.298); /* very light for minimal emphasis */
+
+  --alert-red: oklch(0.72 0.25 29);   /* Slightly brighter red */
+  --alert-red-foreground: oklch(0.985 0.001 106.423);
+
+  --info-blue: oklch(0.7 0.15 240);
+  --info-blue-foreground: oklch(0.985 0.001 106.423);
+
+  --warn-orange: oklch(0.82 0.18 50);
+  --warn-orange-foreground: oklch(0.985 0.001 106.423);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    scrollbar-width: none;
   }
+  /* WebKit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
   i.fi {
     @apply inline-block translate-y-0.5;
+  }
+  Button {
+    @apply cursor-pointer;
+  }
+  
+  /* Utility classes for your custom grays */
+  .text-gray-1 {
+    color: var(--gray-1);
+  }
+
+  .bg-gray-1 {
+    background-color: var(--gray-1);
+  }
+
+  .text-gray-2 {
+    color: var(--gray-2);
+  }
+
+  .bg-gray-2 {
+    background-color: var(--gray-2);
+  }
+
+  .bg-white-black {
+    background-color: var(--white);
+  }
+  
+  .text-white-black {
+    color: var(--white);
+  }
+  
+  .border-white-black {
+    border-color: var(--white);
   }
 }
