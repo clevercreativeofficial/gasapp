@@ -64,7 +64,7 @@ const Navbar = ({ variant }: NavbarProps) => {
         ];
 
         return (
-            <nav className="sticky top-0 bg-[var(--white)] bg-opacity-85 backdrop-blur-md border-b border-secondary z-50">
+            <nav className="sticky top-0 bg-[var(--card)] bg-opacity-85 backdrop-blur-md border-b border-secondary z-50">
                 <Container>
                     <div className="relative h-[58px] flex items-center justify-between">
                         {/* Logo & Search */}

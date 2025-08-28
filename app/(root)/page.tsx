@@ -12,11 +12,11 @@ import Status from '@/components/status'
 const page = () => {
   return (
     <Container>
-      <div className="flex md:justify-between justify-center gap-6 border-rose-400">
+      <div className="flex md:justify-between justify-center gap-6">
         {/* sidebar */}
-        <div className="hidden md:block my-6">
+        <div className="hidden md:block">
           <Sidebar>
-            <div className="h-full flex flex-col py-6">
+            <div className="h-full flex flex-col">
               <div className="flex flex-col">
                 <div className="mb-8">
                   <h2 className="text-lg font-semibold text-foreground mb-4 px-2">Menu</h2>
@@ -82,7 +82,7 @@ const page = () => {
         <div className="max-w-[calc(1200px-275px)] flex gap-6">
           <main className="flex-1">
             {/* Status */}
-            <div className="w-full grid grid-cols-1 mt-6">
+            <div className="w-full grid grid-cols-1 mt-2">
               <Status />
             </div>
 
@@ -184,7 +184,7 @@ const page = () => {
           </main>
 
           {/* Right Sidebar */}
-          <div className="sticky top-24 hidden lg:block my-6">
+          <div className="sticky top-24 hidden lg:block my-2">
             <Sidebar>
               <div className="h-[calc(100vh-70px)] flex flex-col gap-4">
                 {/* Sponsors */}

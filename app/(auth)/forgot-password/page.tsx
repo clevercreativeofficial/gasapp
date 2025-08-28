@@ -48,9 +48,9 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-background flex items-center justify-center p-4">
+    <div className="w-full min-h-[90vh] bg-background flex items-center justify-center p-4">
       <div className="w-full max-w-xs">
-        <div className="bg-secondary/30 backdrop-blur-sm px-6 py-8 rounded-2xl shadow-lg">
+        <div className="bg-[var(--card)] backdrop-blur-sm px-6 py-8 rounded-2xl">
           <div className="flex flex-col items-center gap-3 mb-6">
             <Link href="/">
               <div className="w-14">
@@ -94,7 +94,7 @@ const ForgotPassword = () => {
 
               <Button
                 type="submit"
-                className="w-full p-4 bg-accent hover:bg-accent/80 text-foreground rounded-lg font-medium"
+                className="w-full p-4 bg-accent hover:bg-accent/80 text-white rounded-lg font-medium"
                 disabled={isLoading}
               >
                 {isLoading ? (

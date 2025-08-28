@@ -61,7 +61,7 @@ const AddPost = () => {
                     </div>
                     
                     <Button 
-                        className="px-5 h-9 bg-accent hover:bg-primary/90 text-primary-foreground rounded-lg shadow-sm hover:shadow transition-all duration-200"
+                        className="px-5 h-9 bg-accent hover:bg-primary/90 text-white rounded-lg shadow-sm hover:shadow transition-all duration-200"
                     >
                         Post
                     </Button>

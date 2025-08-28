@@ -12,6 +12,7 @@ import notFound from './images/not-found.svg';
 import thumbnail from './yo_thumbnail.svg';
 import pattern from './images/dl3.png';
 import ad from './images/ad.jpeg'
+import auth_image from './images/auth-image.png'
 
 export const assets = { 
   logo,
@@ -27,5 +28,6 @@ export const assets = {
   notFound,
   thumbnail,
   pattern,
-  ad
+  ad,
+  auth_image
 };
