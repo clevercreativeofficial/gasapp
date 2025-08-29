@@ -1,5 +1,5 @@
-import logo from './yo_logo_sm.svg';
-import logo_lg from './yo_logo_lg.svg';
+import logo from './G_logo_sm.svg';
+import logo_lg from './G_logo_lg.svg';
 import avatar_male from './images/avatar_male.svg';
 import avatar_female from './images/avatar_female.svg';
 import profile from './images/profile.jpg';

@@ -7,6 +7,15 @@ import { assets } from "@/public/assets.js";
 import Container from "@/components/container";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 interface NavbarProps {
     variant?: string;
@@ -136,7 +145,7 @@ const Navbar = ({ variant }: NavbarProps) => {
                                     <li className="relative">
                                         <div className="relative w-10 h-10 flex items-center justify-center hover:bg-accent/10 text-foreground bg-secondary rounded-full">
                                             <i className="text-xl fi fi-rr-shopping-bag"></i>
-                                            <div className="absolute -top-0.5 -right-1 w-4 h-4 text-[10px] flex items-center justify-center rounded-full bg-accent text-background">
+                                            <div className="absolute -top-0.5 -right-1 w-4 h-4 text-[10px] flex items-center justify-center rounded-full bg-accent text-white">
                                                 1
                                             </div>
                                         </div>
@@ -146,7 +155,7 @@ const Navbar = ({ variant }: NavbarProps) => {
                                     <li className="relative">
                                         <div className="relative w-10 h-10 flex items-center justify-center hover:bg-accent/10 text-foreground bg-secondary rounded-full">
                                             <i className="text-xl fi fi-rr-messages"></i>
-                                            <div className="absolute -top-0.5 -right-1 w-4 h-4 text-[10px] flex items-center justify-center rounded-full bg-accent text-background">
+                                            <div className="absolute -top-0.5 -right-1 w-4 h-4 text-[10px] flex items-center justify-center rounded-full bg-accent text-white">
                                                 5
                                             </div>
                                         </div>
@@ -156,7 +165,7 @@ const Navbar = ({ variant }: NavbarProps) => {
                                     <li className="relative">
                                         <div className="relative w-10 h-10 flex items-center justify-center hover:bg-accent/10 text-foreground bg-secondary rounded-full">
                                             <i className="text-xl fi fi-rr-bell"></i>
-                                            <div className="absolute -top-0.5 -right-1 w-4 h-4 text-[10px] flex items-center justify-center rounded-full bg-accent text-background">
+                                            <div className="absolute -top-0.5 -right-1 w-4 h-4 text-[10px] flex items-center justify-center rounded-full bg-accent text-white">
                                                 9+
                                             </div>
                                         </div>
@@ -165,11 +174,53 @@ const Navbar = ({ variant }: NavbarProps) => {
 
                                 <li className="relative">
                                     <div className="relative flex items-center flex-row-reverse gap-2 cursor-pointer">
-                                        <i className="absolute bottom-0 right-0 fi fi-rr-angle-small-down h-4 w-4 bg-background text-foreground rounded-full z-10"></i>
-                                        <Avatar className="w-10 h-10 z-0">
-                                            <AvatarImage src="https://mockmind-api.uifaces.co/content/cartoon/10.jpg" alt="avatar" />
-                                            <AvatarFallback className="text-sm">JD</AvatarFallback>
-                                        </Avatar>
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger>
+                                                <i className="absolute bottom-0 right-0 fi fi-rr-angle-small-down h-4 w-4 bg-background text-foreground rounded-full z-10"></i>
+                                                <Avatar className="w-10 h-10 z-0">
+                                                    <AvatarImage src="https://mockmind-api.uifaces.co/content/cartoon/10.jpg" alt="avatar" />
+                                                    <AvatarFallback className="text-sm">JD</AvatarFallback>
+                                                </Avatar>
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent className="absolute top-0 right-0 z-50 w-64 shadow-lg">
+                                                <DropdownMenuLabel className="flex gap-4 flex-col justify-center items-center py-8">
+                                                    <Avatar className="w-16 h-16 z-0">
+                                                        <AvatarImage src="https://mockmind-api.uifaces.co/content/cartoon/10.jpg" alt="avatar" />
+                                                        <AvatarFallback className="text-sm">JD</AvatarFallback>
+                                                    </Avatar>
+                                                    <div className="text-center">
+                                                        <p className="text-sm font-medium">John Doe</p>
+                                                        <p className="text-xs text-muted-foreground">+257 79 *** *87</p>
+                                                    </div>
+                                                    <div className="flex gap-2">
+                                                        <Button variant="outline">
+                                                            Account Settings
+                                                            <Image src={assets.logo} width={16} height={16} alt="logo" />
+                                                            ID
+                                                        </Button>
+                                                    </div>
+                                                </DropdownMenuLabel>
+                                                <DropdownMenuSeparator />
+                                                <DropdownMenuItem>
+                                                    <div className="flex items-center gap-2">
+                                                        <i className="fi fi-rr-settings h-4 w-4 text-accent"></i>
+                                                        Settings
+                                                    </div>
+                                                </DropdownMenuItem>
+                                                <DropdownMenuItem>
+                                                    <div className="flex items-center gap-2"><i className="fi fi-rr-moon h-4 w-4 text-accent"></i>
+                                                        Mode: System</div>
+                                                </DropdownMenuItem>
+                                                <DropdownMenuItem>
+                                                    <div className="flex items-center gap-2"><i className="fi fi-rr-interrogation h-4 w-4 text-accent"></i>
+                                                        Help</div>
+                                                </DropdownMenuItem>
+                                                <DropdownMenuItem>
+                                                    <div className="flex items-center gap-2"><i className="fi fi-rr-exit h-4 w-4 text-accent"></i>
+                                                        Sign out</div>
+                                                </DropdownMenuItem>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
                                     </div>
                                 </li>
                             </ul>
@@ -197,16 +248,19 @@ const Navbar = ({ variant }: NavbarProps) => {
                 <Container>
                     <div className="relative h-[58px] flex items-center justify-between">
                         {/* Logo & Search */}
-                        <div className="relative flex gap-2 items-center">
-                            <Link href="/">
-                                <div className="flex items-center">
-                                    <div className="w-10">
-                                        <Image src={assets.logo} alt="logo" />
-                                    </div>
-                                    <span className="ml-2 text-xl text-accent font-bold">Yoonda</span>
-                                </div>
-                            </Link>
-                        </div>
+
+                        <Link href="/">
+                            <div className="h-10">
+                                <Image
+                                    src={assets.logo_lg}
+                                    alt="logo"
+                                    width={500}
+                                    height={500}
+                                    className="h-full w-fit object-contain"
+                                />
+                            </div>
+                        </Link>
+
 
                         {/* Right Actions */}
                         <div className="h-full flex items-center">

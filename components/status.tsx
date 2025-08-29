@@ -52,7 +52,7 @@ const statusData = [
 
 const Status = () => {
   return (
-    <Card className="w-full overflow-hidden border-border/20 bg-card/70 backdrop-blur-sm p-5 rounded-2xl">
+    <Card className="w-full border-transparent bg-transparent p-0 overflow-hidden">
       <CardContent className="p-0">
         <Carousel opts={{ align: "start", dragFree: true }}>
           <CarouselContent className="ml-0">

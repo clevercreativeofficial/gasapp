@@ -97,7 +97,7 @@ const Post: React.FC<PostProps> = ({
           {/* User Info */}
           <div className="flex items-center justify-between w-full gap-3">
             <div className="flex items-center gap-3">
-              <Avatar className="h-11 w-11 object-cover border-2 border-primary/20">
+              <Avatar className="h-11 w-11 object-cover border-2 border-border/20">
                 <AvatarImage src={profileImg} alt={`${userName}'s profile`} />
                 <AvatarFallback className="bg-gradient-to-r from-accent/20 to-accent/10 text-foreground font-medium">
                   {userName.charAt(0)}
@@ -116,19 +116,13 @@ const Post: React.FC<PostProps> = ({
               </div>
 
             </div>
-            <Button className="rounded-full bg-foreground hover:text-white hover:bg-accent">
+            <Button className="aspect-square rounded-full bg-muted text-foreground hover:text-white hover:bg-accent">
               <UserPlus className="h-4 w-4" />
-              Follow
             </Button>
           </div>
 
           {/* Post Settings */}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={togglePostSetting}
-            className="h-8 w-8 rounded-full text-muted-foreground hover:text-foreground hover:bg-transparent transition-colors"
-          >
+          <Button onClick={togglePostSetting} className="aspect-square rounded-full bg-transparent text-foreground hover:bg-transparent">
             <MoreVertical className="h-4 w-4" />
           </Button>
 
@@ -232,7 +226,7 @@ const Post: React.FC<PostProps> = ({
               variant={isLiked ? "default" : "outline"}
               size="sm"
               onClick={toggleLike}
-              className={`${isLiked ? "bg-accent/30 text-accent" : ""} border-transparent gap-2 rounded-full transition-all duration-200 hover:bg-accent/20`}
+              className={`${isLiked ? "bg-rose-500/10 text-rose-500" : ""} border-transparent gap-2 rounded-full transition-all duration-200 hover:bg-rose-500/20`}
             >
               <Heart
                 className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`}
@@ -271,9 +265,9 @@ const Post: React.FC<PostProps> = ({
 
         {/* Comment Input */}
         <div className="flex items-center gap-3 w-full px-5">
-          <Avatar className="h-12 w-12 border border-border/30">
+          <Avatar className="h-12 w-12 border-2 border-border/20">
             <AvatarImage src={profileImg} alt={`${userName}'s profile`} />
-            <AvatarFallback className="bg-gradient-to-r from-blue-400 to-purple-500 text-white">
+            <AvatarFallback className="bg-gradient-to-r from-accent/20 to-accent/30 text-white">
               {userName.charAt(0)}
             </AvatarFallback>
           </Avatar>
