@@ -145,7 +145,7 @@ const Navbar = ({ variant }: NavbarProps) => {
                                     <li className="relative">
                                         <div className="relative w-10 h-10 flex items-center justify-center hover:bg-accent/10 text-foreground bg-secondary rounded-full">
                                             <i className="text-xl fi fi-rr-shopping-bag"></i>
-                                            <div className="absolute -top-0.5 -right-1 w-4 h-4 text-[10px] flex items-center justify-center rounded-full bg-accent text-white">
+                                            <div className="absolute -top-0.5 -right-1 w-4 h-4 text-[10px] flex items-center justify-center rounded-full bg-accent text-background">
                                                 1
                                             </div>
                                         </div>
@@ -155,7 +155,7 @@ const Navbar = ({ variant }: NavbarProps) => {
                                     <li className="relative">
                                         <div className="relative w-10 h-10 flex items-center justify-center hover:bg-accent/10 text-foreground bg-secondary rounded-full">
                                             <i className="text-xl fi fi-rr-messages"></i>
-                                            <div className="absolute -top-0.5 -right-1 w-4 h-4 text-[10px] flex items-center justify-center rounded-full bg-accent text-white">
+                                            <div className="absolute -top-0.5 -right-1 w-4 h-4 text-[10px] flex items-center justify-center rounded-full bg-accent text-background">
                                                 5
                                             </div>
                                         </div>
@@ -165,7 +165,7 @@ const Navbar = ({ variant }: NavbarProps) => {
                                     <li className="relative">
                                         <div className="relative w-10 h-10 flex items-center justify-center hover:bg-accent/10 text-foreground bg-secondary rounded-full">
                                             <i className="text-xl fi fi-rr-bell"></i>
-                                            <div className="absolute -top-0.5 -right-1 w-4 h-4 text-[10px] flex items-center justify-center rounded-full bg-accent text-white">
+                                            <div className="absolute -top-0.5 -right-1 w-4 h-4 text-[10px] flex items-center justify-center rounded-full bg-accent text-background">
                                                 9+
                                             </div>
                                         </div>

@@ -4,7 +4,7 @@ import { assets } from "@/public/assets"
 import Container from "@/components/container"
 
 export const metadata = {
-  title: "Yoonda - Auth",
+  title: "GasApp - Auth",
 };
 
 export default function AuthLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {

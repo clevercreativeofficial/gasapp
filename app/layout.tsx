@@ -8,8 +8,8 @@ const interSans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Yoonda Web",
-  description: "Yoonda is a social media web application to foster youth social interactions, enable marketplace exploration and provide opportunities for growth and professional development with a focus on jobs in the environmental sectors.",
+  title: "GasApp",
+  description: "GasApp is a social media web application to foster youth social interactions, enable marketplace exploration and provide opportunities for growth and professional development with a focus on jobs in the environmental sectors.",
 };
 
 export default function RootLayout({

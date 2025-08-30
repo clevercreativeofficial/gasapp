@@ -14,7 +14,8 @@ import {
   Heart,
   MessageCircle,
   MoreVertical,
-  UserPlus,
+  UserRoundPlus,
+  UserRoundCheck,
   UserMinus,
   Ban,
   Eye,
@@ -51,6 +52,7 @@ const Post: React.FC<PostProps> = ({
 }) => {
   const [isPostSettingVisible, setIsPostSettingVisible] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const [isFollowing, setFollowing] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [likeCount, setLikeCount] = useState(likes);
   // const [currentSlide, setCurrentSlide] = useState(0);
@@ -63,6 +65,10 @@ const Post: React.FC<PostProps> = ({
       return !prev;
     });
   };
+
+  const toggleFollowing = () => {
+      setFollowing((prev) => prev ? false : true);
+  }
 
   const togglePostSetting = () => {
     setIsPostSettingVisible((prev) => !prev);
@@ -116,8 +122,11 @@ const Post: React.FC<PostProps> = ({
               </div>
 
             </div>
-            <Button className="aspect-square rounded-full bg-muted text-foreground hover:text-white hover:bg-accent">
-              <UserPlus className="h-4 w-4" />
+            <Button onClick={toggleFollowing} className={`${isFollowing === true ? 'bg-accent' : ''} aspect-square rounded-full bg-muted text-foreground hover:text-white hover:bg-accent`}>
+              {
+                isFollowing ?
+                (<UserRoundCheck className="h-4 w-4" />) : (<UserRoundPlus className="h-4 w-4" />)
+              }
             </Button>
           </div>
 
@@ -136,7 +145,7 @@ const Post: React.FC<PostProps> = ({
                 Save post
               </li>
               <li className="flex items-center py-2 px-3 hover:bg-accent/10 cursor-pointer rounded-lg transition-colors">
-                <UserPlus className="h-4 w-4 mr-2" />
+                <UserRoundPlus className="h-4 w-4 mr-2" />
                 Follow {userName}
               </li>
               <li className="flex items-center py-2 px-3 hover:bg-accent/10 cursor-pointer rounded-lg transition-colors">
