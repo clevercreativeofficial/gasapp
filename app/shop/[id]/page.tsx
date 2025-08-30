@@ -4,11 +4,14 @@ import Link from "next/link";
 import Footer from "@/components/footer_sm";
 import Sidebar from "@/components/sidebar";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Textarea } from "@/components/ui/textarea";
+import { Separator } from "@/components/ui/separator"
 import Container from "@/components/container";
 import Image from "next/image";
+import { Bookmark, Share2, MapPin, Heart, MessageCircle, Reply, MoreVertical, Flag, UserRoundPlus, SendHorizontal } from "lucide-react";
 
 const Item = () => {
   const comments = [
@@ -17,24 +20,28 @@ const Item = () => {
       fullname: "Emily Rose",
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ipsum dolor sit amet consectetur adipisicing elit. Accusamus, voluptatibus",
       place: "Bujumbura",
+      time: "9 Nov 2025"
     },
     {
       profile: "https://mighty.tools/mockmind-api/content/cartoon/26.jpg",
       fullname: "Awa Melvine",
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ipsum dolor sit amet consectetur adipisicing elit. Accusamus, voluptatibus Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ipsum dolor sit amet consectetur adipisicing elit. Accusamus, voluptatibus",
       place: "Gitega",
+      time: "9 Nov 2025"
     },
     {
       profile: "https://mighty.tools/mockmind-api/content/human/124.jpg",
       fullname: "Emily Rose",
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ipsum dolor sit amet consectetur adipisicing elit. Accusamus, voluptatibus",
       place: "Bujumbura",
+      time: "9 Nov 2025"
     },
     {
       profile: "https://mighty.tools/mockmind-api/content/human/124.jpg",
       fullname: "Emily Rose",
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ipsum dolor sit amet consectetur adipisicing elit. Accusamus, voluptatibus",
       place: "Bujumbura",
+      time: "9 Nov 2025"
     },
   ];
 
@@ -145,108 +152,87 @@ const Item = () => {
 
             </div>
 
-            <div className='w-full bg-[var(--card)] rounded-lg py-3 px-3'>
-              <h2 className='font-semibold text-lg mb-3 text-foreground'>
+            <div className='w-full bg-card rounded-xl p-6 border border-border/40 shadow-sm'>
+              <h2 className='font-semibold text-xl mb-4 text-foreground'>
                 Comments
+                <span className="text-sm font-normal text-muted-foreground ml-2">
+                  {comments.length} {comments.length === 1 ? 'comment' : 'comments'}
+                </span>
               </h2>
+
               <div className='flex flex-col gap-6'>
-                {/* comments */}
                 {comments.map((comment, index) => (
                   <div
                     key={index}
-                    className='flex flex-col gap-2'>
-                    <div className='flex justify-between'>
-                      <div className='flex gap-2'>
-                        <Avatar>
-                          <AvatarImage className={comment.profile} />
-                          <AvatarFallback>JD</AvatarFallback>
+                    className='flex flex-col gap-3 p-4 rounded-lg bg-muted/20 hover:bg-muted/30 transition-colors duration-200'
+                  >
+                    <div className='flex justify-between items-start'>
+                      <div className='flex gap-3'>
+                        <Avatar className="h-10 w-10 border-2 border-background">
+                          <AvatarImage
+                            src={comment.profile}
+                            className="object-cover"
+                            alt={comment.fullname}
+                          />
+                          <AvatarFallback className="bg-primary/10 text-primary font-medium">
+                            {comment.fullname.split(' ').map(n => n[0]).join('')}
+                          </AvatarFallback>
                         </Avatar>
                         <div className='flex flex-col'>
-                          <h2 className='font-normal text-lg text-foreground'>
+                          <h3 className='font-medium text-foreground'>
                             {comment.fullname}
-                          </h2>
-                          <small className='text-muted-foreground'>
-                            {comment.place}
-                          </small>
+                          </h3>
+                          <div className="flex items-center gap-1">
+                            <MapPin className="h-3 w-3 text-muted-foreground" />
+                            <small className='text-muted-foreground text-sm'>
+                              {comment.place}
+                            </small>
+                          </div>
                         </div>
                       </div>
-                      <div className='h-[30px] flex items-center text-background cursor-pointer bg-gray-900 bg-opacity-20 rounded-full z-10'>
-                        <i className='fi fi-sr-menu-dots-vertical translate-y-0.5'></i>
-                      </div>
+
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 rounded-full text-muted-foreground hover:text-foreground"
+                          >
+                            <MoreVertical className="h-4 w-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end" className="w-40">
+                          <DropdownMenuItem>
+                            <Flag className="mr-2 h-4 w-4" />
+                            Report
+                          </DropdownMenuItem>
+                          <DropdownMenuItem>
+                            <Reply className="mr-2 h-4 w-4" />
+                            Reply
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
                     </div>
-                    <div className='text-sm text-muted-foreground'>{comment.text}</div>
+
+                    <p className='text-foreground/80 text-base leading-relaxed pl-13'>
+                      {comment.text}
+                    </p>
+
+                    <div className="flex items-center gap-4 pl-13 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1 hover:text-foreground cursor-pointer">
+                        <Heart className="h-4 w-4" />
+                        Like
+                      </span>
+                      <span className="flex items-center gap-1 hover:text-foreground cursor-pointer">
+                        <MessageCircle className="h-4 w-4" />
+                        Reply
+                      </span>
+                      <span className="text-xs">
+                        {comment.time}
+                      </span>
+                    </div>
                   </div>
                 ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className='md:hidden block'>
-          <div className='bg-background p-3 border rounded-lg'>
-            <h2 className='font-semibold text-2xl text-accent'>
-              Smart watch
-            </h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ipsum dolor sit amet consectetur adipisicing elit. Accusamus, voluptatibus Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ipsum dolor sit amet consectetur adipisicing elit. Accusamus, voluptatibus
-            </p>
-            <p className='text-sm text-foreground mb-4'>5.545 BIF In stock</p>
-            <div className='my-3 flex gap-2'>
-              <Button variant='secondary'>
-                <i className='fi fi-rr-bookmark'></i>
-              </Button>
-              <Button variant='secondary'>
-                <i className='fi fi-rr-redo'></i>
-              </Button>
-            </div>
-
-            <div className='flex flex-col'>
-              <h2 className='font-semibold text-lg pt-5 text-foreground'>
-                Details
-              </h2>
-              <ul>
-                <li className='text-sm my-1 text-muted-foreground'>Condition</li>
-                <li className='text-sm my-1 text-muted-foreground'>Brand</li>
-                <li className='text-sm my-1 text-muted-foreground'>Size</li>
-                <li className='text-sm my-1 text-muted-foreground'>Location</li>
-              </ul>
-              <div>
-                <h2 className='font-semibold text-lg pt-5 text-foreground'>
-                  Seller information
-                </h2>
-                <div className='flex items-center justify-between mt-2 mb-4'>
-                  <div className='flex items-center gap-2'>
-                    <div className='w-12 h-12 rounded-full overflow-hidden'>
-                      <Image
-                        className='w-full h-full aspect-square object-cover'
-                        src='https://mighty.tools/mockmind-api/content/human/87.jpg'
-                        width={48}
-                        height={48}
-                        alt='seller profile'
-                      />
-                    </div>
-                    <div className='flex flex-col'>
-                      <h2 className='font-normal text-lg text-foreground'>
-                        Jack Zadesh
-                      </h2>
-                      <small className='text-muted-foreground'>Gitega</small>
-                    </div>
-                  </div>
-                </div>
-                <Button>Follow</Button>
-                <h2 className='font-semibold text-lg pt-5 text-foreground'>
-                  Ask the seller
-                </h2>
-                <form className='relative w-full mt-2'>
-                  <textarea
-                    name=''
-                    id=''
-                    placeholder='Message...'
-                    className='w-full min-h-[150px] p-3 text-sm text-muted-foreground bg-secondary outline-none rounded-lg'></textarea>
-                  <button className='absolute bottom-2 right-2 h-10 aspect-square justify-center p-4 text-sm rounded-lg transition-colors duration-200 flex gap-2 items-center bg-gray-200 text-foreground hover:text-background hover:bg-accent'>
-                    <i className='fi fi-rr-paper-plane-top'></i>
-                  </button>
-                </form>
               </div>
             </div>
           </div>
@@ -255,67 +241,100 @@ const Item = () => {
         {/* Sidebar */}
         <div className='hidden md:block'>
           <Sidebar>
-            <div className='h-[calc(100vh-100px)] overflow-y-auto '>
-              <div className='bg-[var(--card)] p-3 rounded-lg'>
-                <h2 className='font-semibold text-2xl text-accent'>
-                  Smart whatch
-                </h2>
-                <p className='text-sm text-foreground mb-4'>
-                  5.545 BIF In stock
-                </p>
-                <div className='my-3 flex gap-2'>
-                  <Button variant='secondary'>
-                    <i className='fi fi-rr-bookmark'></i>
-                  </Button>
-                  <Button variant='secondary'>
-                    <i className='fi fi-rr-redo'></i>
-                  </Button>
+            <div className='h-[calc(100vh-100px)] overflow-y-auto'>
+              <div className='bg-card p-6 rounded-xl border border-border/40 shadow-sm'>
+                <div className="flex flex-col justify-between items-start">
+                  <div className='flex flex-col'>
+                    <h2 className='font-semibold text-2xl text-primary'>
+                      Smart Watch
+                    </h2>
+                    <p className='text-sm text-muted-foreground mt-1'>
+                      5,545 BIF • In stock
+                    </p>
+                    <p className="text-sm my-4">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Accusamus ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                  <div className='flex gap-2'>
+                    <Button variant='outline' size='icon' className='rounded-full h-10 w-10'>
+                      <Bookmark className='h-4 w-4' />
+                    </Button>
+                    <Button variant='outline' size='icon' className='rounded-full h-10 w-10'>
+                      <Share2 className='h-4 w-4' />
+                    </Button>
+                  </div>
                 </div>
 
+                <Separator className='my-6' />
+
                 <div className='flex flex-col'>
-                  <h2 className='font-semibold text-lg pt-5 text-foreground'>
+                  <h2 className='font-semibold text-lg text-foreground mb-4'>
                     Details
                   </h2>
-                  <ul>
-                    <li className='text-sm my-1 text-muted-foreground'>Condition</li>
-                    <li className='text-sm my-1 text-muted-foreground'>Brand</li>
-                    <li className='text-sm my-1 text-muted-foreground'>Size</li>
-                    <li className='text-sm my-1 text-muted-foreground'>Location</li>
-                  </ul>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <p className='text-sm text-muted-foreground'>Condition</p>
+                      <p className='text-sm font-medium'>New</p>
+                    </div>
+                    <div>
+                      <p className='text-sm text-muted-foreground'>Brand</p>
+                      <p className='text-sm font-medium'>Apple</p>
+                    </div>
+                    <div>
+                      <p className='text-sm text-muted-foreground'>Size</p>
+                      <p className='text-sm font-medium'>44mm</p>
+                    </div>
+                    <div>
+                      <p className='text-sm text-muted-foreground'>Location</p>
+                      <p className='text-sm font-medium'>Gitega</p>
+                    </div>
+                  </div>
+
+                  <Separator className='my-6' />
+
                   <div>
-                    <h2 className='font-semibold text-lg pt-5 text-foreground'>
+                    <h2 className='font-semibold text-lg text-foreground mb-4'>
                       Seller information
                     </h2>
-                    <div className='flex items-center justify-between mt-2 mb-4'>
-                      <div className='flex items-center gap-2'>
-                        <div className='w-12 h-12 rounded-full overflow-hidden'>
-                          <Avatar>
-                            <AvatarImage className='w-full h-full aspect-square object-cover' src='https://mighty.tools/mockmind-api/content/human/87.jpg' />
-                            <AvatarFallback>JD</AvatarFallback>
-                          </Avatar>
-                        </div>
+                    <div className='flex items-center justify-between mb-6'>
+                      <div className='flex items-center gap-3'>
+                        <Avatar className='w-12 h-12'>
+                          <AvatarImage
+                            className='w-full h-full aspect-square object-cover'
+                            src='https://mighty.tools/mockmind-api/content/human/87.jpg'
+                          />
+                          <AvatarFallback className="bg-primary/10">JZ</AvatarFallback>
+                        </Avatar>
                         <div className='flex flex-col'>
-                          <h2 className='font-normal text-lg text-foreground'>
+                          <h2 className='font-medium text-foreground'>
                             Jack Zadesh
                           </h2>
                           <small className='text-muted-foreground'>Gitega</small>
                         </div>
                       </div>
+                      <Button variant="outline" className="rounded-full aspect-square gap-2">
+                        <UserRoundPlus className="h-4 w-4" />
+                      </Button>
                     </div>
-                    <Button>Follow</Button>
-                    <h2 className='font-semibold text-lg pt-5 text-foreground'>
+
+                    <Separator className='my-6' />
+
+                    <h2 className='font-semibold text-lg text-foreground mb-4'>
                       Ask the seller
                     </h2>
-                    <form className='relative w-full mt-2'>
+                    <div className='relative w-full'>
                       <Textarea
-                        name=''
-                        id=''
-                        placeholder='Message...'
-                        className='w-full min-h-[150px] p-3 text-sm text-muted-foreground bg-secondary border-transparent outline-none rounded-lg'></Textarea>
-                      <Button className='absolute bottom-2 right-2 h-10 aspect-square justify-center p-4 text-sm rounded-lg transition-colors duration-200 flex gap-2 items-center bg-background text-foreground hover:text-background hover:bg-accent'>
-                        <i className='fi fi-rr-paper-plane-top'></i>
+                        placeholder='Type your message here...'
+                        className='w-full min-h-[150px] p-4 text-foreground bg-muted/50 border-border resize-none rounded-xl pr-16'
+                      />
+                      <Button
+                        size="icon"
+                        className='absolute bottom-3 right-3 h-10 w-10 rounded-lg'
+                      >
+                        <SendHorizontal className='h-4 w-4' />
                       </Button>
-                    </form>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -323,7 +342,6 @@ const Item = () => {
           </Sidebar>
         </div>
       </div>
-
     </Container >
   );
 }
