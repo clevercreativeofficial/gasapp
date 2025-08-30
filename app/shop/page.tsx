@@ -1,9 +1,9 @@
 import Footer from "@/components/footer_sm";
 import Sidebar from "@/components/sidebar";
-import Product from "@/components/product";
 import Filters from "@/components/filters";
 import Categories from "@/components/categories";
 import Modal from "@/components/modal"
+import Products from "@/components/products";
 
 function Shop() {
   return (
@@ -31,101 +31,7 @@ function Shop() {
         {/* Products Section */}
         <div className="pt-4 w-full">
           <Modal /> {/* Include modal functionality */}
-          <div className="w-full grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-5">
-            {/* Products List */}
-            <Product
-              productImages={[
-                "https://media.s-bol.com/80Kl9xEJYmGm/ENrAMl/550x550.jpg",
-                "https://www.bhphotovideo.com/images/images500x500/apple_mgyj3am_a_airpods_max_silver_1607506546_1610234.jpg",
-              ]}
-              productName="Headphones"
-              seller="Jack Zadesh"
-              place="Gitega"
-              price={5852}
-            />
-            <Product
-              productImages={[
-                "https://media.s-bol.com/80Kl9xEJYmGm/ENrAMl/550x550.jpg",
-                "https://www.bhphotovideo.com/images/images500x500/apple_mgyj3am_a_airpods_max_silver_1607506546_1610234.jpg",
-              ]}
-              productName="Headphones"
-              seller="Jack Zadesh"
-              place="Gitega"
-              price={5852}
-            />
-            <Product
-              productImages={[
-                "https://media.s-bol.com/80Kl9xEJYmGm/ENrAMl/550x550.jpg",
-                "https://www.bhphotovideo.com/images/images500x500/apple_mgyj3am_a_airpods_max_silver_1607506546_1610234.jpg",
-              ]}
-              productName="Headphones"
-              seller="Jack Zadesh"
-              place="Gitega"
-              price={5852}
-            />
-            <Product
-              productImages={[
-                "https://media.s-bol.com/80Kl9xEJYmGm/ENrAMl/550x550.jpg",
-                "https://www.bhphotovideo.com/images/images500x500/apple_mgyj3am_a_airpods_max_silver_1607506546_1610234.jpg",
-              ]}
-              productName="Headphones"
-              seller="Jack Zadesh"
-              place="Gitega"
-              price={5852}
-            />
-            <Product
-              productImages={[
-                "https://media.s-bol.com/80Kl9xEJYmGm/ENrAMl/550x550.jpg",
-                "https://www.bhphotovideo.com/images/images500x500/apple_mgyj3am_a_airpods_max_silver_1607506546_1610234.jpg",
-              ]}
-              productName="Headphones"
-              seller="Jack Zadesh"
-              place="Gitega"
-              price={5852}
-            />
-            <Product
-              productImages={[
-                "https://media.s-bol.com/80Kl9xEJYmGm/ENrAMl/550x550.jpg",
-                "https://www.bhphotovideo.com/images/images500x500/apple_mgyj3am_a_airpods_max_silver_1607506546_1610234.jpg",
-              ]}
-              productName="Headphones"
-              seller="Jack Zadesh"
-              place="Gitega"
-              price={5852}
-            />
-            <Product
-              productImages={[
-                "https://media.s-bol.com/80Kl9xEJYmGm/ENrAMl/550x550.jpg",
-                "https://www.bhphotovideo.com/images/images500x500/apple_mgyj3am_a_airpods_max_silver_1607506546_1610234.jpg",
-              ]}
-              productName="Headphones"
-              seller="Jack Zadesh"
-              place="Gitega"
-              price={5852}
-            />
-            <Product
-              productImages={[
-                "https://media.s-bol.com/80Kl9xEJYmGm/ENrAMl/550x550.jpg",
-                "https://www.bhphotovideo.com/images/images500x500/apple_mgyj3am_a_airpods_max_silver_1607506546_1610234.jpg",
-              ]}
-              productName="Headphones"
-              seller="Jack Zadesh"
-              place="Gitega"
-              price={5852}
-            />
-            <Product
-              productImages={[
-                "https://media.s-bol.com/80Kl9xEJYmGm/ENrAMl/550x550.jpg",
-                "https://www.bhphotovideo.com/images/images500x500/apple_mgyj3am_a_airpods_max_silver_1607506546_1610234.jpg",
-              ]}
-              productName="Headphones"
-              seller="Jack Zadesh"
-              place="Gitega"
-              price={5852}
-            />
-            
-            {/* Add more products */}
-          </div>
+          <Products /> {/* Products component rendering the products list */}
         </div>
       </div>
     </div>

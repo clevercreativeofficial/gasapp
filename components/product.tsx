@@ -42,7 +42,7 @@ function Product({
 
   return (
     <div className="relative w-full h-[300px] bg-[var(--card)] overflow-hidden rounded-2xl">
-      <Badge variant="secondary" className="absolute top-3 left-3 px-3 py-1 z-10">
+      <Badge variant="secondary" className="absolute top-3 left-3 px-3 py-1 z-10 bg-background/80 backdrop-blur-sm border-border/30 opacity-90">
         {price} Fbu
       </Badge>
       

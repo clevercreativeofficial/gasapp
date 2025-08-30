@@ -122,7 +122,7 @@ const Post: React.FC<PostProps> = ({
               </div>
 
             </div>
-            <Button onClick={toggleFollowing} className={`${isFollowing === true ? 'bg-accent' : ''} aspect-square rounded-full bg-muted text-foreground hover:text-white hover:bg-accent`}>
+            <Button onClick={toggleFollowing} className={`${isFollowing ? '' : 'text-accent'} aspect-square rounded-full bg-muted text-foreground hover:text-white hover:bg-accent`}>
               {
                 isFollowing ?
                 (<UserRoundCheck className="h-4 w-4" />) : (<UserRoundPlus className="h-4 w-4" />)

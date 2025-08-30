@@ -19,7 +19,7 @@ const Footer = () => {
                         <li><a href="">Help</a></li>
                     </ul>
                 </div>
-                <small className="text-[12px] text-foreground/50"> Yoonda &copy; {year}, All Rights Reserved</small>
+                <small className="text-[12px] text-foreground/50"> GasApp &copy; {year}, All Rights Reserved</small>
             </div>
         </footer>
         
