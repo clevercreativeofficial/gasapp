@@ -7,10 +7,10 @@ import { SlidersHorizontal } from "lucide-react";
 
 const Filters = () => {
   return (
-    <Card className="h-full">
-      <CardHeader className="pb-4">
+    <Card className="h-full border-transparent">
+      <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-xl">
-          <SlidersHorizontal className="h-5 w-5 text-primary" />
+          <SlidersHorizontal className="h-5 w-5 text-accent" />
           Filters
         </CardTitle>
       </CardHeader>
@@ -64,18 +64,16 @@ const Filters = () => {
         </div>
 
         <div className="space-y-2">
-          <Label>Price range</Label>
+          <Label>Price range (BIF)</Label>
           <div className="flex items-center gap-2 text-sm">
             <Input
               placeholder="Min"
-              className="w-1/3 h-10"
+              className="w-1/2 h-10 pl-3"
             />
-            <span className="text-muted-foreground">Fbu -</span>
             <Input
               placeholder="Max"
-              className="w-1/3 h-10"
+              className="w-1/2 h-10 pl-3"
             />
-            <span className="text-muted-foreground">Fbu</span>
           </div>
         </div>
       </CardContent>

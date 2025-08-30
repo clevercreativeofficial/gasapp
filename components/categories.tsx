@@ -1,11 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Car, 
-  Footprints, 
-  Smartphone, 
-  Clapperboard, 
-  Home, 
+import {
+  Car,
+  Footprints,
+  Smartphone,
+  Clapperboard,
+  Home,
   Shirt,
   Guitar,
   Heart,
@@ -18,18 +18,18 @@ import {
 
 const Categories = () => {
   const categories = [
-    { icon: <Car className="h-6 w-6" />, name: "Vehicles" },
-    { icon: <Footprints className="h-6 w-6" />, name: "Sporting goods" },
-    { icon: <Smartphone className="h-6 w-6" />, name: "Electronics" },
-    { icon: <Clapperboard className="h-6 w-6" />, name: "Entertainment" },
-    { icon: <Home className="h-6 w-6" />, name: "Home goods" },
-    { icon: <Shirt className="h-6 w-6" />, name: "Apparel" },
-    { icon: <Guitar className="h-6 w-6" />, name: "Musical instruments" },
-    { icon: <Heart className="h-6 w-6" />, name: "Family" },
-    { icon: <Briefcase className="h-6 w-6" />, name: "Office supplies" },
-    { icon: <PawPrint className="h-6 w-6" />, name: "Pet supplies" },
-    { icon: <FileText className="h-6 w-6" />, name: "Classifieds" },
-    { icon: <Gamepad2 className="h-6 w-6" />, name: "Toys & Games" }
+    { icon: <Car className="h-4 w-4" />, name: "Vehicles" },
+    { icon: <Footprints className="h-4 w-4" />, name: "Sporting goods" },
+    { icon: <Smartphone className="h-4 w-4" />, name: "Electronics" },
+    { icon: <Clapperboard className="h-4 w-4" />, name: "Entertainment" },
+    { icon: <Home className="h-4 w-4" />, name: "Home goods" },
+    { icon: <Shirt className="h-4 w-4" />, name: "Apparel" },
+    { icon: <Guitar className="h-4 w-4" />, name: "Musical instruments" },
+    { icon: <Heart className="h-4 w-4" />, name: "Family" },
+    { icon: <Briefcase className="h-4 w-4" />, name: "Office supplies" },
+    { icon: <PawPrint className="h-4 w-4" />, name: "Pet supplies" },
+    { icon: <FileText className="h-4 w-4" />, name: "Classifieds" },
+    { icon: <Gamepad2 className="h-4 w-4" />, name: "Toys & Games" }
   ];
 
   return (
@@ -48,7 +48,9 @@ const Categories = () => {
               variant="secondary"
               className="py-2 px-3 rounded-full flex items-center gap-2 cursor-pointer hover:bg-accent/80 transition-colors"
             >
-              {category.icon}
+              <span>
+                {category.icon}
+              </span>
               {category.name}
             </Badge>
           ))}

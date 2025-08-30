@@ -6,6 +6,7 @@ import Sidebar from "@/components/sidebar";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Textarea } from "@/components/ui/textarea";
 import Container from "@/components/container";
 import Image from "next/image";
 
@@ -143,16 +144,53 @@ const Item = () => {
               </Carousel>
 
             </div>
+
+            <div className='w-full bg-[var(--card)] rounded-lg py-3 px-3'>
+              <h2 className='font-semibold text-lg mb-3 text-foreground'>
+                Comments
+              </h2>
+              <div className='flex flex-col gap-6'>
+                {/* comments */}
+                {comments.map((comment, index) => (
+                  <div
+                    key={index}
+                    className='flex flex-col gap-2'>
+                    <div className='flex justify-between'>
+                      <div className='flex gap-2'>
+                        <Avatar>
+                          <AvatarImage className={comment.profile} />
+                          <AvatarFallback>JD</AvatarFallback>
+                        </Avatar>
+                        <div className='flex flex-col'>
+                          <h2 className='font-normal text-lg text-foreground'>
+                            {comment.fullname}
+                          </h2>
+                          <small className='text-muted-foreground'>
+                            {comment.place}
+                          </small>
+                        </div>
+                      </div>
+                      <div className='h-[30px] flex items-center text-background cursor-pointer bg-gray-900 bg-opacity-20 rounded-full z-10'>
+                        <i className='fi fi-sr-menu-dots-vertical translate-y-0.5'></i>
+                      </div>
+                    </div>
+                    <div className='text-sm text-muted-foreground'>{comment.text}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
         <div className='md:hidden block'>
-          <div className='bg-white p-3 border rounded-lg'>
-            <h2 className='font-semibold text-2xl text-primary-500'>
-              Smart whatch
+          <div className='bg-background p-3 border rounded-lg'>
+            <h2 className='font-semibold text-2xl text-accent'>
+              Smart watch
             </h2>
-
-            <p className='text-sm text-gray-700 mb-4'>5.545 BIF In stock</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ipsum dolor sit amet consectetur adipisicing elit. Accusamus, voluptatibus Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ipsum dolor sit amet consectetur adipisicing elit. Accusamus, voluptatibus
+            </p>
+            <p className='text-sm text-foreground mb-4'>5.545 BIF In stock</p>
             <div className='my-3 flex gap-2'>
               <Button variant='secondary'>
                 <i className='fi fi-rr-bookmark'></i>
@@ -163,17 +201,17 @@ const Item = () => {
             </div>
 
             <div className='flex flex-col'>
-              <h2 className='font-semibold text-lg pt-5 text-gray-700'>
+              <h2 className='font-semibold text-lg pt-5 text-foreground'>
                 Details
               </h2>
               <ul>
-                <li className='text-sm my-1 text-gray-600'>Condition</li>
-                <li className='text-sm my-1 text-gray-600'>Brand</li>
-                <li className='text-sm my-1 text-gray-600'>Size</li>
-                <li className='text-sm my-1 text-gray-600'>Location</li>
+                <li className='text-sm my-1 text-muted-foreground'>Condition</li>
+                <li className='text-sm my-1 text-muted-foreground'>Brand</li>
+                <li className='text-sm my-1 text-muted-foreground'>Size</li>
+                <li className='text-sm my-1 text-muted-foreground'>Location</li>
               </ul>
               <div>
-                <h2 className='font-semibold text-lg pt-5 text-gray-700'>
+                <h2 className='font-semibold text-lg pt-5 text-foreground'>
                   Seller information
                 </h2>
                 <div className='flex items-center justify-between mt-2 mb-4'>
@@ -188,15 +226,15 @@ const Item = () => {
                       />
                     </div>
                     <div className='flex flex-col'>
-                      <h2 className='font-normal text-lg text-gray-700'>
+                      <h2 className='font-normal text-lg text-foreground'>
                         Jack Zadesh
                       </h2>
-                      <small className='text-gray-600'>Gitega</small>
+                      <small className='text-muted-foreground'>Gitega</small>
                     </div>
                   </div>
                 </div>
                 <Button>Follow</Button>
-                <h2 className='font-semibold text-lg pt-5 text-gray-700'>
+                <h2 className='font-semibold text-lg pt-5 text-foreground'>
                   Ask the seller
                 </h2>
                 <form className='relative w-full mt-2'>
@@ -204,8 +242,8 @@ const Item = () => {
                     name=''
                     id=''
                     placeholder='Message...'
-                    className='w-full min-h-[150px] p-3 text-sm text-gray-600 bg-gray-100 outline-none rounded-lg'></textarea>
-                  <button className='absolute bottom-2 right-2 h-10 aspect-square justify-center p-4 text-sm rounded-lg transition-colors duration-200 flex gap-2 items-center bg-gray-200 text-gray-700 hover:text-white hover:bg-primary-500'>
+                    className='w-full min-h-[150px] p-3 text-sm text-muted-foreground bg-secondary outline-none rounded-lg'></textarea>
+                  <button className='absolute bottom-2 right-2 h-10 aspect-square justify-center p-4 text-sm rounded-lg transition-colors duration-200 flex gap-2 items-center bg-gray-200 text-foreground hover:text-background hover:bg-accent'>
                     <i className='fi fi-rr-paper-plane-top'></i>
                   </button>
                 </form>
@@ -214,112 +252,78 @@ const Item = () => {
           </div>
         </div>
 
-        <div className='w-full bg-white rounded-lg py-3 px-3 border'>
-          <h2 className='font-semibold text-lg mb-3 text-gray-700'>
-            Comments
-          </h2>
-          <div className='flex flex-col gap-6'>
-            {/* comments */}
-            {comments.map((comment, index) => (
-              <div
-                key={index}
-                className='flex flex-col gap-2'>
-                <div className='flex justify-between'>
-                  <div className='flex gap-2'>
-                    <Avatar>
-                      <AvatarImage className={comment.profile} />
-                      <AvatarFallback>JD</AvatarFallback>
-                    </Avatar>
-                    <div className='flex flex-col'>
-                      <h2 className='font-normal text-lg text-gray-700'>
-                        {comment.fullname}
-                      </h2>
-                      <small className='text-gray-600'>
-                        {comment.place}
-                      </small>
-                    </div>
-                  </div>
-                  <div className='h-[30px] flex items-center text-white cursor-pointer bg-gray-900 bg-opacity-20 rounded-full z-10'>
-                    <i className='fi fi-sr-menu-dots-vertical translate-y-0.5'></i>
-                  </div>
-                </div>
-                <div className='text-sm text-gray-600'>{comment.text}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Sidebar */}
-      <div className='hidden md:block'>
-        <Sidebar>
-          <div className='h-[calc(100vh-100px)] overflow-y-auto '>
-            <div className='bg-white p-3 border rounded-lg'>
-              <h2 className='font-semibold text-2xl text-primary-500'>
-                Smart whatch
-              </h2>
-              <p className='text-sm text-gray-700 mb-4'>
-                5.545 BIF In stock
-              </p>
-              <div className='my-3 flex gap-2'>
-                <Button variant='secondary'>
-                  <i className='fi fi-rr-bookmark'></i>
-                </Button>
-                <Button variant='secondary'>
-                  <i className='fi fi-rr-redo'></i>
-                </Button>
-              </div>
-
-              <div className='flex flex-col'>
-                <h2 className='font-semibold text-lg pt-5 text-gray-700'>
-                  Details
+        {/* Sidebar */}
+        <div className='hidden md:block'>
+          <Sidebar>
+            <div className='h-[calc(100vh-100px)] overflow-y-auto '>
+              <div className='bg-[var(--card)] p-3 rounded-lg'>
+                <h2 className='font-semibold text-2xl text-accent'>
+                  Smart whatch
                 </h2>
-                <ul>
-                  <li className='text-sm my-1 text-gray-600'>Condition</li>
-                  <li className='text-sm my-1 text-gray-600'>Brand</li>
-                  <li className='text-sm my-1 text-gray-600'>Size</li>
-                  <li className='text-sm my-1 text-gray-600'>Location</li>
-                </ul>
-                <div>
-                  <h2 className='font-semibold text-lg pt-5 text-gray-700'>
-                    Seller information
+                <p className='text-sm text-foreground mb-4'>
+                  5.545 BIF In stock
+                </p>
+                <div className='my-3 flex gap-2'>
+                  <Button variant='secondary'>
+                    <i className='fi fi-rr-bookmark'></i>
+                  </Button>
+                  <Button variant='secondary'>
+                    <i className='fi fi-rr-redo'></i>
+                  </Button>
+                </div>
+
+                <div className='flex flex-col'>
+                  <h2 className='font-semibold text-lg pt-5 text-foreground'>
+                    Details
                   </h2>
-                  <div className='flex items-center justify-between mt-2 mb-4'>
-                    <div className='flex items-center gap-2'>
-                      <div className='w-12 h-12 rounded-full overflow-hidden'>
-                        <Avatar>
-                          <AvatarImage className='w-full h-full aspect-square object-cover' src='https://mighty.tools/mockmind-api/content/human/87.jpg' />
-                          <AvatarFallback>JD</AvatarFallback>
-                        </Avatar>
-                      </div>
-                      <div className='flex flex-col'>
-                        <h2 className='font-normal text-lg text-gray-700'>
-                          Jack Zadesh
-                        </h2>
-                        <small className='text-gray-600'>Gitega</small>
+                  <ul>
+                    <li className='text-sm my-1 text-muted-foreground'>Condition</li>
+                    <li className='text-sm my-1 text-muted-foreground'>Brand</li>
+                    <li className='text-sm my-1 text-muted-foreground'>Size</li>
+                    <li className='text-sm my-1 text-muted-foreground'>Location</li>
+                  </ul>
+                  <div>
+                    <h2 className='font-semibold text-lg pt-5 text-foreground'>
+                      Seller information
+                    </h2>
+                    <div className='flex items-center justify-between mt-2 mb-4'>
+                      <div className='flex items-center gap-2'>
+                        <div className='w-12 h-12 rounded-full overflow-hidden'>
+                          <Avatar>
+                            <AvatarImage className='w-full h-full aspect-square object-cover' src='https://mighty.tools/mockmind-api/content/human/87.jpg' />
+                            <AvatarFallback>JD</AvatarFallback>
+                          </Avatar>
+                        </div>
+                        <div className='flex flex-col'>
+                          <h2 className='font-normal text-lg text-foreground'>
+                            Jack Zadesh
+                          </h2>
+                          <small className='text-muted-foreground'>Gitega</small>
+                        </div>
                       </div>
                     </div>
+                    <Button>Follow</Button>
+                    <h2 className='font-semibold text-lg pt-5 text-foreground'>
+                      Ask the seller
+                    </h2>
+                    <form className='relative w-full mt-2'>
+                      <Textarea
+                        name=''
+                        id=''
+                        placeholder='Message...'
+                        className='w-full min-h-[150px] p-3 text-sm text-muted-foreground bg-secondary border-transparent outline-none rounded-lg'></Textarea>
+                      <Button className='absolute bottom-2 right-2 h-10 aspect-square justify-center p-4 text-sm rounded-lg transition-colors duration-200 flex gap-2 items-center bg-background text-foreground hover:text-background hover:bg-accent'>
+                        <i className='fi fi-rr-paper-plane-top'></i>
+                      </Button>
+                    </form>
                   </div>
-                  <Button>Follow</Button>
-                  <h2 className='font-semibold text-lg pt-5 text-gray-700'>
-                    Ask the seller
-                  </h2>
-                  <form className='relative w-full mt-2'>
-                    <textarea
-                      name=''
-                      id=''
-                      placeholder='Message...'
-                      className='w-full min-h-[150px] p-3 text-sm text-gray-600 bg-gray-100 outline-none rounded-lg'></textarea>
-                    <button className='absolute bottom-2 right-2 h-10 aspect-square justify-center p-4 text-sm rounded-lg transition-colors duration-200 flex gap-2 items-center bg-gray-200 text-gray-700 hover:text-white hover:bg-primary-500'>
-                      <i className='fi fi-rr-paper-plane-top'></i>
-                    </button>
-                  </form>
                 </div>
               </div>
             </div>
-          </div>
-        </Sidebar>
+          </Sidebar>
+        </div>
       </div>
+
     </Container >
   );
 }

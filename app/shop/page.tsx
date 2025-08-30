@@ -8,7 +8,7 @@ import Products from "@/components/products";
 function Shop() {
   return (
     <div className="max-w-[1200px] m-auto flex justify-center px-3">
-      <div className="w-full flex md:justify-between justify-center gap-3">
+      <div className="relative w-full flex md:justify-between justify-center gap-3">
         {/* Sidebar */}
         <div className="hidden md:block">
           <Sidebar>
@@ -22,7 +22,7 @@ function Shop() {
               <Filters />
               <Categories />
             </div>
-            <div className="absolute left-3 bottom-5">
+            <div className="absolute left-3 -bottom-32">
               <Footer />
             </div>
           </Sidebar>
