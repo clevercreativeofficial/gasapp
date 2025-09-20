@@ -16,8 +16,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
-import { Bookmark, MoreVertical, ShoppingCart, MapPin, XCircle, AlertCircle } from "lucide-react";
-
+import { Card, CardContent } from "@/components/ui/card";
+import { toast } from "sonner";
+import {
+  Bookmark,
+  MoreVertical,
+  ShoppingCart,
+  MapPin,
+  XCircle,
+  AlertCircle,
+  Heart,
+  CheckCircle,
+} from "lucide-react";
 
 type ProductProps = {
   productImages: string[];
@@ -25,6 +35,8 @@ type ProductProps = {
   seller: string;
   place: string;
   price: number;
+  condition?: "new" | "used" | "refurbished";
+  rating?: number;
 };
 
 function Product({
@@ -32,94 +44,217 @@ function Product({
   productName = "",
   seller = "",
   place = "",
-  price = 0
+  price = 0,
+  condition = "used",
+  rating = 0,
 }: ProductProps) {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const toggleFavorite = () => {
     setIsFavorite((prevState) => !prevState);
+
+    if (!isFavorite) {
+      toast.success("Added to saved items", {
+        description: `${productName} has been added to your saved items.`,
+      });
+    } else {
+      toast.info("Removed from saved items", {
+        description: `${productName} has been removed from your saved items.`,
+      });
+    }
+  };
+
+  const handlePurchase = () => {
+    toast.success("Added to cart", {
+      description: `${productName} has been added to your shopping cart.`,
+      action: {
+        label: "View cart",
+        onClick: () => console.log("View cart clicked"),
+      },
+    });
+  };
+
+  const conditionLabels = {
+    new: "New",
+    used: "Used",
+    refurbished: "Refurbished",
+  };
+
+  const conditionColors = {
+    new: "bg-green-500/20 text-green-700",
+    used: "bg-blue-500/20 text-blue-700",
+    refurbished: "bg-purple-500/20 text-purple-700",
   };
 
   return (
-    <div className="relative w-full h-[300px] bg-[var(--card)] overflow-hidden rounded-2xl">
-      <Badge variant="secondary" className="absolute top-3 left-3 px-3 py-1 z-10 bg-background/80 backdrop-blur-sm border-border/30 opacity-90">
-        {price} Fbu
-      </Badge>
-      
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute top-3 right-3 h-[30px] w-[30px] flex items-center text-white bg-gray-900 bg-opacity-20 rounded-full z-10 p-0"
-          >
-            <MoreVertical className="h-4 w-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-48 p-2">
-          <DropdownMenuItem className="flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md">
-            <XCircle className="h-4 w-4" />
-            Hide a listing
-          </DropdownMenuItem>
-          <DropdownMenuItem className="flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md">
-            <AlertCircle className="h-4 w-4" />
-            Report a product
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-
-      <div className="w-full h-[calc(100%-125px)] overflow-hidden">
-        <Carousel>
-          <CarouselContent>
-            {productImages.map((img, index) => (
-              <CarouselItem key={index}>
-                <Image
-                  className="h-full w-full aspect-square object-cover"
-                  width={500}
-                  height={500}
-                  src={img}
-                  alt={`post-image-${index + 1}`}
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-2 h-6 w-6 bg-background/80 backdrop-blur-sm border-border/30 opacity-90 hover:opacity-100 hover:bg-background transition-all" />
-          <CarouselNext className="right-2 h-6 w-6 bg-background/80 backdrop-blur-sm border-border/30 opacity-90 hover:opacity-100 hover:bg-background transition-all" />
-        </Carousel>
-      </div>
-
-      <div className="h-[75px] flex mx-3 border-b border-border">
-        <div className="w-full h-full flex flex-col justify-center">
-          <h2 className="text-lg font-semibold text-primary-500">
-            {productName}
-          </h2>
-          <small className="text-muted-foreground">
-            {seller} · <MapPin className="h-4 w-4 inline-block" /> {place}
-          </small>
+    <Card className="group relative w-full h-[300px] bg-card overflow-hidden rounded-xl border-0 shadow-md hover:shadow-lg transition-all duration-300">
+      <CardContent className="p-0 h-full">
+        {/* Top badges */}
+        <div className="absolute top-3 left-3 z-10 flex gap-2">
+          <Badge className={`block group-hover:hidden px-2 py-1 text-xs font-semibold ${conditionColors[condition]}`}>
+            {conditionLabels[condition]}
+          </Badge>
+          <Badge variant="secondary" className="hidden group-hover:block px-2 py-1 text-xs font-semibold bg-background/90 backdrop-blur-sm">
+            {price.toLocaleString()} Fbu
+          </Badge>
         </div>
-      </div>
-      
-      <div className="h-[50px] grid grid-cols-2 text-sm">
-        <Button
-          variant="ghost"
-          onClick={toggleFavorite}
-          className={`flex justify-center items-center ${isFavorite ? "text-accent" : "text-foreground"} h-full hover:text-foreground hover:bg-accent/10 gap-2 rounded-none`}
-        >
-          <Bookmark
-            className={`h-4 w-4 ${isFavorite ? "fill-accent text-accent" : ""}`}
+
+        {/* Rating badge */}
+        {rating > 0 && (
+          <Badge className="absolute top-3 right-12 z-10 px-2 py-1 text-xs font-semibold bg-background/90 backdrop-blur-sm flex items-center gap-1">
+            <Heart className="h-3 w-3 fill-destructive text-destructive" />
+            {rating}
+          </Badge>
+        )}
+
+        {/* Options dropdown */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-3 right-3 h-7 w-7 z-10 bg-background/80 backdrop-blur-sm rounded-full hover:bg-background"
+            >
+              <MoreVertical className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-48">
+            <DropdownMenuItem className="flex items-center gap-2 px-3 py-2 cursor-pointer">
+              <XCircle className="h-4 w-4" />
+              Hide listing
+            </DropdownMenuItem>
+            <DropdownMenuItem className="flex items-center gap-2 px-3 py-2 cursor-pointer">
+              <AlertCircle className="h-4 w-4" />
+              Report product
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        {/* debugging section*/}
+        {/* {productImages.map((img, index) => (
+          <Image
+            key={index}
+            fill
+            className="object-cover"
+            src={img}
+            alt={`${productName} - image ${index + 1}`}
           />
-          {isFavorite ? "Saved" : "Save"}
-        </Button>
-        
-        <Button
-          variant="ghost"
-          className="flex justify-center items-center h-full hover:bg-accent/10 text-foreground gap-2 rounded-none border-l border-border"
-        >
-          <ShoppingCart className="h-4 w-4" />
-          Purchase
-        </Button>
-      </div>
-    </div>
+        ))} */}
+
+
+
+        {/* Image carousel */}
+        <div className="relative w-full h-full overflow-hidden">
+          <Carousel
+            className="h-full"
+            opts={{
+              startIndex: currentImageIndex,
+              loop: true
+            }}
+          >
+            <CarouselContent className="h-full">
+              {productImages.map((img, index) => (
+                <CarouselItem key={index} className="h-full">
+                  <div className="relative w-full h-full">
+                    <Image
+                      fill
+                      className="object-cover"
+                      src={img}
+                      alt={`${productName} - image ${index + 1}`}
+                      priority={index === 0} // Add priority for first image
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            {productImages.length > 1 && (
+              <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1 z-30 opacity-0 group-hover:opacity-100 transition-opacity">
+                {productImages.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`h-2 w-2 rounded-full transition-all ${
+                      index === currentImageIndex 
+                        ? "bg-primary scale-125" 
+                        : "bg-white/60"
+                    }`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentImageIndex(index);
+                    }}
+                    aria-label={`View image ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+            {productImages.length > 1 && (
+              <>
+                <CarouselPrevious className="absolute left-2 top-1/2 transform -translate-y-1/2 h-6 w-6 bg-background/80 backdrop-blur-sm border-border/30 opacity-0 group-hover:opacity-100 hover:opacity-100 hover:bg-background transition-all" />
+                <CarouselNext className="absolute right-2 top-1/2 transform -translate-y-1/2 h-6 w-6 bg-background/80 backdrop-blur-sm border-border/30 opacity-0 group-hover:opacity-100 hover:opacity-100 hover:bg-background transition-all" />
+              </>
+            )}
+          </Carousel>
+        </div>
+
+        {/* Image indicators if multiple images */}
+        {/* {productImages.length > 1 && (
+          <div className="absolute bottom-14 left-0 right-0 hidden justify-center gap-1 z-10 px-2">
+            {productImages.map((_, index) => (
+              <button
+                key={index}
+                className={`h-2 w-2 rounded-full transition-all ${
+                  index === currentImageIndex 
+                    ? "bg-primary scale-125" 
+                    : "bg-white/60"
+                }`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentImageIndex(index);
+                }}
+                aria-label={`View image ${index + 1}`}
+              />
+            ))}
+          </div>
+        )} */}
+
+        {/* Product info that shows on hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 z-20">
+          <h2 className="text-lg font-semibold text-white mb-1 line-clamp-1">{productName}</h2>
+          <p className="text-sm text-white/90 flex items-center gap-1 mb-3">
+            {seller} · <MapPin className="h-3 w-3" /> {place}
+          </p>
+
+          <div className="grid grid-cols-2 gap-2">
+            <Button
+              variant={isFavorite ? "default" : "outline"}
+              onClick={toggleFavorite}
+              className="flex items-center gap-2 h-9 hover:border-transparent hover:text-white"
+            >
+              {isFavorite ? (
+                <CheckCircle className="h-4 w-4" />
+              ) : (
+                <Bookmark className="h-4 w-4" />
+              )}
+              {isFavorite ? "Saved" : "Save"}
+            </Button>
+
+            <Button
+              onClick={handlePurchase}
+              className="flex items-center gap-2 h-9"
+            >
+              <ShoppingCart className="h-4 w-4" />
+              Purchase
+            </Button>
+          </div>
+        </div>
+
+        {/* Minimal info that always shows */}
+        <div className="absolute bottom-0 left-0 right-0 opacity-100 group-hover:opacity-0 transition-opacity duration-300 p-3 bg-gradient-to-t from-black/90 to-transparent text-white z-10">
+          <h3 className="text-sm font-medium truncate">{productName}</h3>
+          <p className="text-xs text-white/80 truncate">{seller}</p>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
 

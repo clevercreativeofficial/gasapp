@@ -64,7 +64,7 @@ const Login = () => {
                 />
               </div>
             </Link>
-            <p className='text-md text-foreground'>Sign in to Yoonda</p>
+            <p className='text-md text-foreground'>Sign in to GasApp</p>
           </div>
 
           {errors.server && (

@@ -1,8 +1,5 @@
 const Footer = () => {
 
-    // Copyright year
-    const year = new Date().getFullYear()
-  
     return (
         <footer>
             <div className="flex flex-col gap-4 border-t border-secondary pt-5">
@@ -14,12 +11,12 @@ const Footer = () => {
                         <li><a className='disabled'>Cookies</a></li>
                     </ul>
                     <ul className='flex gap-4'>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Contact</a></li>
-                        <li><a href="">Help</a></li>
+                        <li><a href="" className="hover:text-foreground/60">About</a></li>
+                        <li><a href="" className="hover:text-foreground/60">Contact</a></li>
+                        <li><a href="" className="hover:text-foreground/60">Help</a></li>
                     </ul>
                 </div>
-                <small className="text-[12px] text-foreground/50"> GasApp &copy; {year}, All Rights Reserved</small>
+                <small className="text-[12px] text-foreground/50"> GasApp &copy; {new Date().getFullYear()}, All Rights Reserved</small>
             </div>
         </footer>
         

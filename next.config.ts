@@ -1,6 +1,26 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Use SWC compiler (default in Next.js 12+)
+  //swcMinify: true,
+
+  // Enable React strict mode
+  reactStrictMode: true,
+
+  // Enable compiler optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+
+  // Improve build performance
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+     
+  },
+
+  
+
   images: {
     remotePatterns: [
       {
@@ -42,6 +62,24 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "plus.unsplash.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "media.istockphoto.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "encrypted-tbn0.gstatic.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "buffer.com",
         port: "",
         pathname: "/**",
       },

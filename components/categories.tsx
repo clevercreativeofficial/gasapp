@@ -19,13 +19,13 @@ import {
 const Categories = () => {
   const categories = [
     { icon: <Car className="h-4 w-4" />, name: "Vehicles" },
+    { icon: <Shirt className="h-4 w-4" />, name: "Apparel" },
     { icon: <Footprints className="h-4 w-4" />, name: "Sporting goods" },
     { icon: <Smartphone className="h-4 w-4" />, name: "Electronics" },
+    { icon: <Heart className="h-4 w-4" />, name: "Family" },
     { icon: <Clapperboard className="h-4 w-4" />, name: "Entertainment" },
     { icon: <Home className="h-4 w-4" />, name: "Home goods" },
-    { icon: <Shirt className="h-4 w-4" />, name: "Apparel" },
     { icon: <Guitar className="h-4 w-4" />, name: "Musical instruments" },
-    { icon: <Heart className="h-4 w-4" />, name: "Family" },
     { icon: <Briefcase className="h-4 w-4" />, name: "Office supplies" },
     { icon: <PawPrint className="h-4 w-4" />, name: "Pet supplies" },
     { icon: <FileText className="h-4 w-4" />, name: "Classifieds" },
@@ -33,7 +33,7 @@ const Categories = () => {
   ];
 
   return (
-    <Card className="mt-3 border-transparent">
+    <Card className="mt-3 border-transparent py-6">
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-xl">
           <Grid3X3 className="h-5 w-5 text-accent" />
@@ -46,7 +46,7 @@ const Categories = () => {
             <Badge
               key={index}
               variant="secondary"
-              className="py-2 px-3 rounded-full flex items-center gap-2 cursor-pointer hover:bg-accent/80 transition-colors"
+              className="h-10 px-3 rounded-full inline-flex items-center gap-2 cursor-pointer hover:bg-accent/80 transition-colors"
             >
               <span>
                 {category.icon}

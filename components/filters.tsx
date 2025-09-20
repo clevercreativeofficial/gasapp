@@ -7,7 +7,7 @@ import { SlidersHorizontal } from "lucide-react";
 
 const Filters = () => {
   return (
-    <Card className="h-full border-transparent">
+    <Card className="h-full border-transparent py-6">
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-xl">
           <SlidersHorizontal className="h-5 w-5 text-accent" />
@@ -18,7 +18,7 @@ const Filters = () => {
         <div className="space-y-2">
           <Label htmlFor="sort-by">Sort by (default)</Label>
           <Select>
-            <SelectTrigger id="sort-by" className="h-10">
+            <SelectTrigger id="sort-by" className="w-full h-10">
               <SelectValue placeholder="Date listed: Newest first" />
             </SelectTrigger>
             <SelectContent>
@@ -33,7 +33,7 @@ const Filters = () => {
         <div className="space-y-2">
           <Label htmlFor="condition">Condition</Label>
           <Select>
-            <SelectTrigger id="condition" className="h-10">
+            <SelectTrigger id="condition" className="w-full h-10">
               <SelectValue placeholder="New" />
             </SelectTrigger>
             <SelectContent>

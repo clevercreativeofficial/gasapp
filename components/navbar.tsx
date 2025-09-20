@@ -141,6 +141,15 @@ const Navbar = ({ variant }: NavbarProps) => {
                         {/* Right Actions */}
                         <div className="h-full flex items-center">
                             <ul className="flex gap-3 items-center">
+                                <div className="md:hidden block">
+                                    <Link href={"/menu"}>
+                                        <li className="relative">
+                                            <div className="relative w-10 h-10 flex items-center justify-center hover:bg-accent/10 text-foreground bg-secondary rounded-full">
+                                                <i className="text-xl fi fi-rr-grid"></i>
+                                            </div>
+                                        </li>
+                                    </Link>
+                                </div>
                                 <Link href={"/cart"}>
                                     <li className="relative">
                                         <div className="relative w-10 h-10 flex items-center justify-center hover:bg-accent/10 text-foreground bg-secondary rounded-full">
@@ -190,10 +199,10 @@ const Navbar = ({ variant }: NavbarProps) => {
                                                     </Avatar>
                                                     <div className="text-center">
                                                         <p className="text-sm font-medium">John Doe</p>
-                                                        <p className="text-xs text-muted-foreground">+257 79 *** *87</p>
+                                                        <p className="text-xs text-muted-foreground">+257 79 *** 87</p>
                                                     </div>
                                                     <div className="flex gap-2">
-                                                        <Button variant="outline">
+                                                        <Button variant="outline" className="w-full hover:text-foreground hover:border-transparent duration-300">
                                                             Account Settings
                                                             <Image src={assets.logo} width={16} height={16} alt="logo" />
                                                             ID
@@ -201,23 +210,29 @@ const Navbar = ({ variant }: NavbarProps) => {
                                                     </div>
                                                 </DropdownMenuLabel>
                                                 <DropdownMenuSeparator />
-                                                <DropdownMenuItem>
-                                                    <div className="flex items-center gap-2">
-                                                        <i className="fi fi-rr-settings h-4 w-4 text-accent"></i>
+                                                <DropdownMenuItem className="group">
+                                                    <div className="flex items-center gap-2 hover:text-foreground duration-300">
+                                                        <i className="fi fi-rr-settings h-4 w-4 text-accent group-hover:text-foreground"></i>
                                                         Settings
                                                     </div>
                                                 </DropdownMenuItem>
-                                                <DropdownMenuItem>
-                                                    <div className="flex items-center gap-2"><i className="fi fi-rr-moon h-4 w-4 text-accent"></i>
-                                                        Mode: System</div>
+                                                <DropdownMenuItem className="group">
+                                                    <div className="flex items-center gap-2 hover:text-foreground duration-300">
+                                                        <i className="fi fi-rr-moon h-4 w-4 text-accent group-hover:text-foreground"></i>
+                                                        Mode: System
+                                                    </div>
                                                 </DropdownMenuItem>
-                                                <DropdownMenuItem>
-                                                    <div className="flex items-center gap-2"><i className="fi fi-rr-interrogation h-4 w-4 text-accent"></i>
-                                                        Help</div>
+                                                <DropdownMenuItem className="group">
+                                                    <div className="flex items-center gap-2 hover:text-foreground duration-300">
+                                                        <i className="fi fi-rr-interrogation h-4 w-4 text-accent group-hover:text-foreground"></i>
+                                                        Help
+                                                    </div>
                                                 </DropdownMenuItem>
-                                                <DropdownMenuItem>
-                                                    <div className="flex items-center gap-2"><i className="fi fi-rr-exit h-4 w-4 text-accent"></i>
-                                                        Sign out</div>
+                                                <DropdownMenuItem className="group">
+                                                    <div className="flex items-center gap-2 hover:text-foreground duration-300">
+                                                        <i className="fi fi-rr-exit h-4 w-4 text-accent group-hover:text-foreground"></i>
+                                                        Sign out
+                                                    </div>
                                                 </DropdownMenuItem>
                                             </DropdownMenuContent>
                                         </DropdownMenu>

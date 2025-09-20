@@ -83,7 +83,7 @@ const Register = () => {
                 />
               </div>
             </Link>
-            <p className='text-md text-foreground'>Sign up to Yoonda</p>
+            <p className='text-md text-foreground'>Sign up to GasApp</p>
           </div>
           
           {errors.server && (

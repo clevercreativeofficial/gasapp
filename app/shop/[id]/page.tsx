@@ -116,7 +116,7 @@ const Item = () => {
         <div className='w-full flex md:justify-between justify-center gap-3'>
           {/* Products Section */}
           <div className='relative md:pt-3 pt-2 w-full flex flex-col gap-3 overflow-hidden'>
-            <div className='grid grid-cols-1 mb-5'>
+            <div className='grid grid-cols-1'>
               <Carousel>
                 <CarouselContent>
                   <CarouselItem>
@@ -152,7 +152,7 @@ const Item = () => {
 
             </div>
 
-            <div className='w-full bg-card rounded-xl p-6 border border-border/40 shadow-sm'>
+            <div className='w-full bg-card rounded-xl p-6 mb-4'>
               <h2 className='font-semibold text-xl mb-4 text-foreground'>
                 Comments
                 <span className="text-sm font-normal text-muted-foreground ml-2">
@@ -242,7 +242,7 @@ const Item = () => {
         <div className='hidden md:block'>
           <Sidebar>
             <div className='h-[calc(100vh-100px)] overflow-y-auto'>
-              <div className='bg-card p-6 rounded-xl border border-border/40 shadow-sm'>
+              <div className='bg-card p-6 rounded-xl'>
                 <div className="flex flex-col justify-between items-start">
                   <div className='flex flex-col'>
                     <h2 className='font-semibold text-2xl text-primary'>
@@ -253,7 +253,7 @@ const Item = () => {
                     </p>
                     <p className="text-sm my-4">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Accusamus ipsum dolor sit amet consectetur adipisicing elit.
+                      Accusamus ipsum dolor sit... (Read more)
                     </p>
                   </div>
                   <div className='flex gap-2'>

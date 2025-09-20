@@ -9,7 +9,7 @@ import {
   DialogDescription,
   DialogHeader,
   // DialogTitle,
-  DialogTrigger,
+  //DialogTrigger,
 } from "@/components/ui/dialog"
 
 function ModalWrapper() {
@@ -25,7 +25,7 @@ function ModalWrapper() {
         </Button>
       </div>
       <Dialog>
-        <DialogTrigger>Open</DialogTrigger>
+        {/* <DialogTrigger>Open</DialogTrigger> */}
         <DialogContent>
           <DialogHeader>
             {/* <DialogTitle>Are you absolutely sure?</DialogTitle> */}

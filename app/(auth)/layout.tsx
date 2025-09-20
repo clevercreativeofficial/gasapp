@@ -31,7 +31,7 @@ export default function AuthLayout({ children, }: Readonly<{ children: React.Rea
               <li><a href="">Help</a></li>
             </ul>
           </div>
-          <small className="text-[12px] text-foreground/50"> Yoonda &copy; {new Date().getFullYear()}, All Rights Reserved</small>
+          <small className="text-[12px] text-foreground/50"> GasApp &copy; {new Date().getFullYear()}, All Rights Reserved</small>
         </div>
       </footer>
     </Container>
